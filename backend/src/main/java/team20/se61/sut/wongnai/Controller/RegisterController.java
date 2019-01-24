@@ -25,49 +25,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 
-
-
-@EnableAutoConfiguration
-@RestController
-@CrossOrigin("http://localhost:4200")
-public class RegisterController {
-
-
-    String message;
-    @Autowired
-    private ProfilesRepository profilesRepository;
-    @Autowired
-    private ContactRepository contactRepository;
-    @Autowired
-    private PrefixRepository prefixRepository;
-    @Autowired
-    private SexRepository sexRepository;
-
-    @GetMapping("/prefix")
-    public Collection<PrefixEntity> prefixapi() {
-        return prefixRepository.findAll().stream().collect(Collectors.toList());
-    }
-
-    @GetMapping("/sex")
-    public Collection<SexEntity> sexapi() {
-        return sexRepository.findAll().stream().collect(Collectors.toList());
-    }
-
-
-    @PostMapping("/addprofiles")
-    @ResponseBody
-    public Map<String, String> newProfiles(@RequestBody() Map<String, Object> body) {
-        HashMap<String,String> map = new HashMap<>();
-        String email = body.get("email").toString();
-        String passworg = body.get("password").toString();
-        String name = body.get("name").toString();
-        String telephonenumber = body.get("telephonenumber").toString();
-        String address = body.get("address").toString();
-        String prefix = body.get("prefix").toString();
-        String sex = body.get("sex").toString();
-
-        if(validation(email, passworg, name,telephonenumber,address,prefix,sex )!=true){
-            map.put("message",message);
+message);
             return map;
         }
         else{
