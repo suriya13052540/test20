@@ -1,4 +1,4 @@
-
+Jenkinsfile (Declarative Pipeline)
 agent any 
     stages {
         stage('Build') { 
